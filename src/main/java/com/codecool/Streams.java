@@ -21,13 +21,16 @@ public class Streams {
          * without using an array
          */
 
-        Stream<String> s2 = Stream.of(a1);
+        Stream<String> s2 = Stream.of("one", "two", "three");
 
         /*
          * Create a stream using a stream builder.
          */
 
         Stream.Builder<String> b1 = Stream.builder();
+        b1.add("one");
+        b1.add("two");
+        b1.add("three");
         Stream<String> s3 = b1.build();
 
         /*
@@ -68,6 +71,6 @@ public class Streams {
          */
 
         Supplier<Integer> fibSupp = new Fibonacci();
-        Stream<Integer> s6 = /* ??? */;
+        Stream<Integer> s6 = Stream.generate(fibSupp).limit(10);
     }
 }
